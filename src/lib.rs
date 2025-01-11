@@ -1,3 +1,4 @@
+pub mod config;
 pub mod secrets;
 
 pub fn add(left: u64, right: u64) -> u64 {
