@@ -1,9 +1,10 @@
+//! Module for secrets handling
+use serde::Deserialize;
+use serde::Serialize;
 use std::fmt::Debug;
 use std::fmt::Display;
 
-use serde::Deserialize;
-use serde::Serialize;
-
+/// Container that masks its value from Debug and Display attempts
 #[derive(Clone, Copy, Deserialize, Serialize)]
 pub struct Mask<T> {
     val: T,
@@ -43,6 +44,7 @@ impl<T> Debug for Mask<T> {
     }
 }
 
+/// Enum for the type of available secrets
 #[derive(Clone, Copy, Debug, Serialize, Deserialize)]
 pub enum Secret<T> {
     Token(Mask<T>),
