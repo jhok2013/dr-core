@@ -2,6 +2,8 @@
 name = "dr-core"
 version = "0.1.0"
 edition = "2021"
+description = 'Configuration loading and handling for dr ecosystem to work with Dremio'
+license = "MIT or Apache-2.0"
 
 [dependencies]
 ron = "0.8.1"
