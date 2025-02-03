@@ -1,8 +1,24 @@
 use std::fmt::Debug;
 use std::fmt::Display;
 
+use serde::Deserialize;
+use serde::Serialize;
+
+#[derive(Clone, Copy, Deserialize, Serialize)]
 pub struct Mask<T> {
     val: T,
+}
+
+impl From<&str> for Mask<String> {
+    fn from(value: &str) -> Self {
+        Mask::new(String::from(value))
+    }
+}
+
+impl From<String> for Mask<String> {
+    fn from(value: String) -> Self {
+        Mask::new(value.clone())
+    }
 }
 
 impl<T> Mask<T> {
@@ -27,6 +43,7 @@ impl<T> Debug for Mask<T> {
     }
 }
 
+#[derive(Clone, Copy, Debug, Serialize, Deserialize)]
 pub enum Secret<T> {
     Token(Mask<T>),
     Pwd(Mask<T>),
